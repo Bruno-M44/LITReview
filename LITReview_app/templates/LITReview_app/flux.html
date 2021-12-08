@@ -6,7 +6,7 @@
 </head>
 
 <form action="/LITReview_app/ticket_creation">
-    <button type="submit">Créer un ticket</button>
+    <button type="submit">Demander une critique</button>
 </form>
 
 <form action="/LITReview_app/ticket_review_creation">
@@ -16,20 +16,24 @@
     {% for post in posts %}
         {% if post.ticket %} {# review #}
             {% if post.user == user_connected %}
-                <p>Vous avez demandé une critique</p>
+                <p>Vous avez publié une critique</p>
             {% else %}
-                <p>{{ post.user }} a demandé une critique</p>
+                <p>{{ post.user }} a publié une critique</p>
             {% endif %}
             <p>{{ post.time_created }}</p>
+            <p>{{ post.headline }}</p>
+            <p>{{ post.rating }}</p>
+            <p>{{ post.body }}</p>
             <p>{{ post.ticket.title }}</p>
             <p>{{ post.ticket.description }}</p>
-            <img src="/media/images/IMG_2978_1T61o7q.JPG">
+            {% load static %}
+            <img src="{% static post.ticket.image %}">
             <p>--------------------------------</p>
         {% else %} {# ticket #}
             <p>{{ post.title }}</p>
             <p>{{ post.time_created }}</p>
             <p>{{ post.description }}</p>
-            <form action="/LITReview_app/review_creation">
+            <form action="/LITReview_app/review_creation/{{ post.id }}">
                 <button type="submit">Créer une critique</button>
             </form>
             <p>--------------------------------</p>

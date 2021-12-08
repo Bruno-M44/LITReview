@@ -10,7 +10,7 @@
     <form method="post" enctype="multipart/form-data">
         {% csrf_token %}
         <h3>Critique</h3>
-        {{ review_form.as_p }}
+        {{ form.as_p }}
         <input type="submit" value="Envoyer">
     </form>
 {% endblock content %}

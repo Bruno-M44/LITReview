@@ -8,7 +8,8 @@ class Ticket(models.Model):
     description = models.TextField(max_length=2048, blank=True)
     user = models.ForeignKey(
         to=settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
-    image = models.ImageField(null=True, blank=True, upload_to="images/")
+    image = models.ImageField(null=True, blank=True,
+                              upload_to="static/LITReview_app/images/")
     time_created = models.DateTimeField(auto_now_add=True)
 
 
