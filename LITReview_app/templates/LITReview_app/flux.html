@@ -27,7 +27,9 @@
             <p>{{ post.ticket.title }}</p>
             <p>{{ post.ticket.description }}</p>
             {% load static %}
-            <img src="{% static post.ticket.image %}">
+            {% if post.ticket.image %}
+                <img src="{{ post.ticket.image.url }}">
+            {% endif %}
             <p>--------------------------------</p>
         {% else %} {# ticket #}
             <p>{{ post.title }}</p>

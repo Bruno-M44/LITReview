@@ -4,13 +4,17 @@
 <link rel="stylesheet" type="text/css"
       href="{% static 'LITReview_app/style.css' %}">
 <body>
-    <h1>LITReview</h1>
-    <ul>
-        <li><a href="/LITReview_app/flux/">Flux</a></li>
-        <li><a href="/LITReview_app/posts/">Posts</a></li>
-        <li><a href="/LITReview_app/subscriptions/">Abonnements</a></li>
-        <li><a href="{% url 'logout' %}">Se déconnecter</a></li>
-    </ul>
+    <header>
+        <h1>LITReview</h1>
+        <nav>
+            <ul>
+                <li><a href="/LITReview_app/flux/">Flux</a></li>
+                <li><a href="/LITReview_app/posts/">Posts</a></li>
+                <li><a href="/LITReview_app/subscriptions/">Abonnements</a></li>
+                <li><a href="{% url 'logout' %}">Se déconnecter</a></li>
+            </ul>
+        </nav>
+    </header>
     {% block content %}{% endblock content %}
 </body>
 </html>

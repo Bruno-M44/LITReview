@@ -1,7 +1,35 @@
-li a {
-    color: green;
+body {
+	border: solid thin;
 }
 
-p {
-    color: red;
+header {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	border-bottom: solid thin;
+}
+
+header h1 {
+	margin-left: auto;
+	margin-right: auto;
+	width: auto;
+}
+
+nav ul {
+  list-style-type: none;
+  display: flex;
+}
+
+nav ul li {
+  margin: 1rem;
+}
+
+.horizontal_aligned {
+	display: flex;
+	justify-content: center;
+	min-height: 300px;
+}
+
+.block_centered {
+	margin: auto;
 }
