@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% block content %}
+    <head>
+        <meta charset="UTF-8">
+        <title>Modifier votre propre critique</title>
+    </head>
+
+    <h2>Modifier votre critique</h2>
+
+    <p>Vous êtes en train de poster en réponse à</p>
+
+    <p>{{ review.ticket.user }} a demandé une critique
+        {{ review.ticket.time_created }}</p>
+
+    {{ review.ticket.title }}<br>
+    {{ review.ticket.description }}<br>
+    {% load static %}
+        {% if review.ticket.image %}
+            <img src="{{ review.ticket.image.url }}">
+        {% endif %}
+    {% load static %}
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <h3>Critique</h3>
+        {{ form.as_p }}
+        <input type="submit" value="Envoyer">
+    </form>
+{% endblock content %}

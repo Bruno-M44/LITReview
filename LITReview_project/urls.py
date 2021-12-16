@@ -4,7 +4,10 @@ from django.conf import settings
 from django.conf.urls.static import static
 
 urlpatterns = [
-    path('LITReview_app/', include('LITReview_app.urls')),
+    path("", include("authentication.urls")),
+    path("feeds/", include("feeds.urls")),
+    path("subscriptions/", include("subscriptions.urls")),
+    path("reviews/", include("reviews.urls")),
+    path("tickets/", include("tickets.urls")),
     path('admin/', admin.site.urls),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
-# + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+{% block content %}
+<head>
+    <meta charset="UTF-8">
+    <title>Confirmation suppression ticket</title>
+</head>
+
+<form method="post">{% csrf_token %}
+    <p>Etes-vous sûr de supprimer {{ object.title }} ?</p>
+    <input type="submit" value="Confirmer">
+</form>
+
+{% endblock content %}

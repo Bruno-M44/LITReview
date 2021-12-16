@@ -1,0 +1,150 @@
+body {
+	border: solid thin;
+	min-height: 500px;
+}
+
+header {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	border-bottom: solid thin;
+}
+
+img {
+	margin: 0 3%;
+	width: 20%;
+}
+
+span {
+	margin: auto 0;
+}
+
+header h1 {
+	margin-left: auto;
+	margin-right: auto;
+	width: auto;
+}
+
+nav ul {
+  list-style-type: none;
+  display: flex;
+}
+
+nav ul li {
+  margin: 1rem;
+}
+
+.bold {
+	font-weight: bold;
+}
+
+
+.horizontal_aligned {
+	display: flex;
+	justify-content: center;
+}
+
+.horizontal_aligned_space_between{
+	display: flex;
+	justify-content: space-between;
+}
+
+.horizontal_aligned_flex_start{
+	display: flex;
+	justify-content: flex-start;
+}
+
+.vertical_aligned {
+	display: flex;
+	justify-content: center;
+	flex-direction: column;
+}
+
+.block_centered {
+	margin: auto;
+}
+
+.block_right {
+	margin: 0 0 5% 80%;
+}
+
+.block_feeds {
+	margin: 5% 30%;
+}
+
+.block_modify {
+	margin: 0 5% 5% 50%;
+}
+
+.block_delete {
+	margin: 0 10 5% 0%;
+}
+
+.items_centered {
+	align-items: center;
+}
+
+
+.block_centered_with_space {
+	margin: auto auto 10% auto;
+}
+
+.width_min {
+	min-width: 30%;
+}
+
+.width_100 {
+	width: 100%;
+}
+
+.relative {
+	position: relative;
+}
+
+.absolute_right {
+	position: absolute;
+  right: 0;
+}
+
+.absolute_middle {
+	position: absolute;
+  right: 20%;
+}
+
+.post {
+	border: solid thin;
+	margin: 5%;
+	padding-right: 5%;
+}
+
+.full-star:before {
+  content: "\2605";
+}
+
+.empty-star:before {
+  content: "\2606";
+}
+
+
+
+
+
+
+
+
+
+::-webkit-input-placeholder {
+   text-align: center;
+}
+
+:-moz-placeholder { /* Firefox 18- */
+   text-align: center;  
+}
+
+::-moz-placeholder {  /* Firefox 19+ */
+   text-align: center;  
+}
+
+:-ms-input-placeholder {  
+   text-align: center; 
+}

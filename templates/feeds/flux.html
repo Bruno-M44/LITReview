@@ -1,0 +1,77 @@
+{% extends 'base.html' %}
+{% block content %}
+<head>
+    <meta charset="UTF-8">
+    <title>Flux</title>
+</head>
+
+<div class="horizontal_aligned">
+    <div class="block_feeds">
+        <div class="horizontal_aligned">
+            <form class="block_centered" action="/tickets/ticket_creation">
+                <button type="submit">Demander une critique</button>
+            </form>
+
+            <form class="block_centered" action="/reviews/ticket_review_creation">
+                <button type="submit">Créer une critique</button>
+            </form>
+        </div>
+        {% if posts %}
+            {% for post in posts %}
+                {% if post.ticket %} {# review #}
+                    <div class="post">
+                        <div class="horizontal_aligned_space_between">
+                        {% if post.user == user_connected %}
+                            <p>Vous avez publié une critique</p>
+                        {% else %}
+                            <p>{{ post.user }} a publié une critique</p>
+                        {% endif %}
+                            <p><small>{{ post.time_created }}</small></p>
+                        </div>
+                    <div class="horizontal_aligned_flex_start">
+                        <p class="bold">{{ post.headline }} - </p>
+                        {% for rating in range %}
+                            {% if rating < post.rating %}
+                                <span class="full-star"></span>
+                            {% else %}
+                                <span class="empty-star"></span>
+                            {% endif %}
+                        {% endfor %}
+                    </div>
+                    <p>{{ post.body }}</p>
+                        <div class="post">
+                        <p>Ticket - {{ post.ticket.user }}</p>
+                        <p>{{ post.ticket.title }}</p>
+                        <p>{{ post.ticket.description }}</p>
+                        {% load static %}
+                        {% if post.ticket.image %}
+                            <img src="{{ post.ticket.image.url }}">
+                        </div>
+                    </div>
+                    {% endif %}
+                {% else %} {# ticket #}
+                    <div class="post">
+                        <div class="horizontal_aligned_space_between">
+                        {% if post.user == user_connected %}
+                            <p>Vous avez demandé une critique</p>
+                        {% else %}
+                            <p>{{ post.user }} a demandé une critique</p>
+                        {% endif %}
+                            <p><small>{{ post.time_created }}</small></p>
+                        </div>
+                    <p>{{ post.title }}</p>
+                    <p>{{ post.description }}</p>
+                    {% load static %}
+                    {% if post.image %}
+                        <img src="{{ post.image.url }}">
+                    {% endif %}
+                    <form class="block_right" action="/reviews/review_creation/{{ post.id }}">
+                        <button type="submit">Créer une critique</button>
+                    </form>
+                    </div>
+                {% endif %}
+            {% endfor %}
+        {% endif %}
+    </div>
+</div>
+{% endblock content %}

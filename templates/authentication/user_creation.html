@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+	<link rel="stylesheet" type="text/css"
+  	href="{% static 'style.css' %}">
+    <meta charset="UTF-8">
+    <title>Formulaire d'inscription</title>
+</head>
+<body>
+<header>
+	<h1>LITReview</h1>
+</header>
+
+<div class="horizontal_aligned">
+    <div class="block_centered vertical_aligned width_min">
+        <h2 class="block_centered">Inscrivez-vous</h2>
+
+        <div class="relative">
+            <form class="block_centered width_100" method="post">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <input class="absolute_right" type="submit" value="S'inscrire">
+            </form>
+
+            <form class="absolute_middle" action="/">
+                <button type="submit">Retourner</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

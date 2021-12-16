@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+{% block content %}
+<head>
+    <meta charset="UTF-8">
+    <title>Onglet d'abonnements</title>
+</head>
+
+<div class="horizontal_aligned">
+    <div class="block_feeds">
+        <h3>Suivre d'autres utilisateurs</h3>
+            <form method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <input type="submit" name="add_user_sub" value="Envoyer">
+            </form>
+
+        <h3>Abonnements</h3>
+            {% for subscription in subscriptions %}
+                <form method="post" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    {{ subscription.followed_user }}
+                    <input type="hidden" name="followed_user" value="{{ subscription.followed_user }}">
+                    <input type="submit" name="delete_user_sub" value="Désabonner">
+                </form>
+            {% endfor %}
+
+        <h3>Abonnés</h3>
+            {% for subscriber in subscribers %}
+                <p>{{ subscriber.user }}</p>
+            {% endfor %}
+    </div>
+</div>>
+{% endblock content %}

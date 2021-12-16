@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% block content %}
+    <head>
+        <meta charset="UTF-8">
+        <title>Créer une critique</title>
+    </head>
+
+    <h2>Créer une critique</h2>
+
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <h3>Critique</h3>
+        {{ form.as_p }}
+        <input type="submit" value="Envoyer">
+    </form>
+{% endblock content %}

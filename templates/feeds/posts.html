@@ -1,0 +1,85 @@
+{% extends 'base.html' %}
+{% block content %}
+<head>
+    <meta charset="UTF-8">
+    <title>Posts</title>
+</head>
+
+<div class="horizontal_aligned">
+    <div class="block_feeds">
+        <h3 class="horizontal_aligned">Vos posts</h3>
+
+        {% if posts %}
+            {% for post in posts %}
+                {% if post.ticket %} {# review #}
+                    <div class="post">
+                        <div class="horizontal_aligned_space_between">
+                        {% if post.user == user_connected %}
+                            <p>Vous avez publié une critique</p>
+                        {% else %}
+                            <p>{{ post.user }} a publié une critique</p>
+                        {% endif %}
+                            <p><small>{{ post.time_created }}</small></p>
+                        </div>
+                    <div class="horizontal_aligned_flex_start">
+                        <p class="bold">{{ post.headline }} - </p>
+                        {% for rating in range %}
+                            {% if rating < post.rating %}
+                                <span class="full-star"></span>
+                            {% else %}
+                                <span class="empty-star"></span>
+                            {% endif %}
+                        {% endfor %}
+                    </div>
+                    <p>{{ post.body }}</p>
+                        <div class="post">
+                        <p>Ticket - {{ post.ticket.user }}</p>
+                        <p>{{ post.ticket.title }}</p>
+                        <p>{{ post.ticket.description }}</p>
+                        {% load static %}
+                        {% if post.ticket.image %}
+                            <img src="{{ post.ticket.image.url }}">
+                        </div>
+                {% endif %}
+                    <div class="horizontal_aligned">
+                        <form class="block_modify" action="/reviews/review_update/{{ post.id }}">
+                            <button type="submit">Modifier</button>
+                        </form>
+                        <form class="block_delete" action="/reviews/review_delete/{{ post.id }}">
+                            <button type="submit">Supprimer</button>
+                        </form>
+                    </div>
+                    </div>
+
+                {% else %} {# ticket #}
+                    <div class="post">
+                        <div class="horizontal_aligned_space_between">
+                        {% if post.user == user_connected %}
+                            <p>Vous avez demandé une critique</p>
+                        {% else %}
+                            <p>{{ post.user }} a demandé une critique</p>
+                        {% endif %}
+                            <p><small>{{ post.time_created }}</small></p>
+                        </div>
+                    <p>{{ post.title }}</p>
+                    <p>{{ post.description }}</p>
+                    {% load static %}
+                    {% if post.image %}
+                        <img src="{{ post.image.url }}">
+                    {% endif %}
+                        <div class="horizontal_aligned">
+                            <form class="block_modify" action="/tickets/ticket_update/{{ post.id }}">
+                                <button type="submit">Modifier</button>
+                            </form>
+                            <form class="block_delete" action="/tickets/ticket_delete/{{ post.id }}">
+                                <button type="submit">Supprimer</button>
+                            </form>
+                        </div>
+                    </div>
+                {% endif %}
+            {% endfor %}
+        {% endif %}
+    </div>
+</div>
+
+{% endblock content %}
