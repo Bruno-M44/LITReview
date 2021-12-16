@@ -21,53 +21,53 @@
                 {% if post.ticket %} {# review #}
                     <div class="post">
                         <div class="horizontal_aligned_space_between">
-                        {% if post.user == user_connected %}
-                            <p>Vous avez publié une critique</p>
-                        {% else %}
-                            <p>{{ post.user }} a publié une critique</p>
-                        {% endif %}
-                            <p><small>{{ post.time_created }}</small></p>
-                        </div>
-                    <div class="horizontal_aligned_flex_start">
-                        <p class="bold">{{ post.headline }} - </p>
-                        {% for rating in range %}
-                            {% if rating < post.rating %}
-                                <span class="full-star"></span>
+                            {% if post.user == user_connected %}
+                                <p>Vous avez publié une critique</p>
                             {% else %}
-                                <span class="empty-star"></span>
+                                <p>{{ post.user }} a publié une critique</p>
                             {% endif %}
-                        {% endfor %}
-                    </div>
-                    <p>{{ post.body }}</p>
+                                <p><small>{{ post.time_created }}</small></p>
+                        </div>
+                        <div class="horizontal_aligned_flex_start">
+                            <p class="bold">{{ post.headline }} - </p>
+                            {% for rating in range %}
+                                {% if rating < post.rating %}
+                                    <span class="full-star"></span>
+                                {% else %}
+                                    <span class="empty-star"></span>
+                                {% endif %}
+                            {% endfor %}
+                        </div>
+                        <p>{{ post.body }}</p>
                         <div class="post">
-                        <p>Ticket - {{ post.ticket.user }}</p>
-                        <p>{{ post.ticket.title }}</p>
-                        <p>{{ post.ticket.description }}</p>
-                        {% load static %}
-                        {% if post.ticket.image %}
-                            <img src="{{ post.ticket.image.url }}">
+                            <p>Ticket - {{ post.ticket.user }}</p>
+                            <p>{{ post.ticket.title }}</p>
+                            <p>{{ post.ticket.description }}</p>
+                            {% load static %}
+                            {% if post.ticket.image %}
+                                <img src="{{ post.ticket.image.url }}">
+                            {% endif %}
                         </div>
                     </div>
-                    {% endif %}
                 {% else %} {# ticket #}
                     <div class="post">
                         <div class="horizontal_aligned_space_between">
-                        {% if post.user == user_connected %}
-                            <p>Vous avez demandé une critique</p>
-                        {% else %}
-                            <p>{{ post.user }} a demandé une critique</p>
-                        {% endif %}
-                            <p><small>{{ post.time_created }}</small></p>
+                            {% if post.user == user_connected %}
+                                <p>Vous avez demandé une critique</p>
+                            {% else %}
+                                <p>{{ post.user }} a demandé une critique</p>
+                            {% endif %}
+                                <p><small>{{ post.time_created }}</small></p>
                         </div>
-                    <p>{{ post.title }}</p>
-                    <p>{{ post.description }}</p>
-                    {% load static %}
-                    {% if post.image %}
-                        <img src="{{ post.image.url }}">
-                    {% endif %}
-                    <form class="block_right" action="/reviews/review_creation/{{ post.id }}">
-                        <button type="submit">Créer une critique</button>
-                    </form>
+                        <p>{{ post.title }}</p>
+                        <p>{{ post.description }}</p>
+                        {% load static %}
+                        {% if post.image %}
+                            <img src="{{ post.image.url }}">
+                        {% endif %}
+                        <form class="block_right" action="/reviews/review_creation/{{ post.id }}">
+                            <button type="submit">Créer une critique</button>
+                        </form>
                     </div>
                 {% endif %}
             {% endfor %}

@@ -1,4 +1,4 @@
-from django.forms import CharField, ModelForm, ChoiceField, RadioSelect
+from django.forms import CharField, Textarea, ModelForm, ChoiceField, RadioSelect
 from feeds.models import Review
 
 
@@ -13,7 +13,7 @@ class ReviewForm(ModelForm):
     )
     headline = CharField(label="Titre")
     rating = ChoiceField(label="Note", widget=RadioSelect, choices=NOTES)
-    body = CharField(label="Commentaire")
+    body = CharField(label="Commentaire", widget=Textarea)
 
     class Meta:
         model = Review

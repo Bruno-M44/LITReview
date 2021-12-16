@@ -32,15 +32,15 @@
                         {% endfor %}
                     </div>
                     <p>{{ post.body }}</p>
-                        <div class="post">
+                    <div class="post">
                         <p>Ticket - {{ post.ticket.user }}</p>
                         <p>{{ post.ticket.title }}</p>
                         <p>{{ post.ticket.description }}</p>
                         {% load static %}
                         {% if post.ticket.image %}
                             <img src="{{ post.ticket.image.url }}">
-                        </div>
-                {% endif %}
+                        {% endif %}
+                    </div>
                     <div class="horizontal_aligned">
                         <form class="block_modify" action="/reviews/review_update/{{ post.id }}">
                             <button type="submit">Modifier</button>
