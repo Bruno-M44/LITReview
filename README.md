@@ -14,7 +14,7 @@
 	`pip install -r requirements.txt`
 
 ## Lancer le serveur : 
-	`python manage.py runserve`
+	`python manage.py runserver`
 
 Cliquer sur le lien du serveur qui est apparu. Vous accédez à l'écran d'accueil
 de l'application et pouvez y naviguer.
